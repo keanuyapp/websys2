@@ -43,6 +43,8 @@
             <a href="index.php?login=true&#login">Log in</a>
             <a href="index.php?register=true&#register">Register</a>
             <a href="products.php?">Products</a>
+            <a href="myorders.php?myorders=true">My Orders</a>
+            <a href="cart.php?products=true#portfolio">Cart</a>
          </div>
       </div>
 
@@ -52,8 +54,6 @@
 					<li><a href="index.php?register=true&#register">Register</a></li>');
 					}
 					else{
-						print "<li><a style='color:black' href=cart.php?products=true#portfolio>Cart</a></li>";
-            print "<li><a style='color:black' href=myorders.php?myorders=true>My Orders</a></li>";
 						print "<li><a style='color:black' href=index.php?logout=true>Logout</a></li>";
 						print "<h5 style='color:#eb5d1e'>  Welcome " . $_COOKIE['type'];
 						print "  " .$_COOKIE['email'];
@@ -88,6 +88,7 @@
         <div class="section-title">
           <h2>Products</h2>
           <p>Cart</p>
+
                   
           <?php 
 								$hostname = "localhost";
@@ -113,7 +114,7 @@
 												setcookie("orders", $serialized_cart, time() + 3600);
 											}
 											ob_end_clean(); // Clear output buffer
-											header("Location: cart.php");
+											header("Location:cart.php");
 											exit();
 										}
 										$compiled_orders = $_COOKIE['orders'];
@@ -263,45 +264,7 @@
 										
 								?>
 
-<?php 
-								$hostname = "localhost";
-								$database = "Shopee";
-								$db_login = "";
-								$db_pass = "";
 
-								$dlink = mysqli_connect($hostname, $db_login, $db_pass) or die("Could not connect");
-								mysqli_select_db($dlink, $database) or die("Could not select database");
-
-								// $query="select * from user where email='".$_REQUEST['email']."'";
-								// $query1="select * from user";	
-								// $result = mysqli_query($dlink,$query) or die(mysqli_error($dlink));
-								// $result1 = mysqli_query($dlink,$query1) or die(mysqli_error($dlink));
-								// $num_results = mysqli_num_rows($result);
-								// $num_results1 = mysqli_num_rows($result1);
-
-								if ($_REQUEST['place_order'] == 'true') {
-									$cart = unserialize($_COOKIE["orders"]);
-									echo "<meta http-equiv='refresh' content='0;url=cart.php'>";
-									
-									for ($x = 0; $x < 8; $x++) {
-										if ($cart[$x]["quantity"] != 0 && $cart[$x]["order"] == true) {
-											$query = "INSERT INTO purchase (userid, prodid, quantity, total, date, status) VALUES ('".$_COOKIE['email']."', '".$cart[$x]['prodid']."', '".$cart[$x]['quantity']."', '".$cart[$x]['total']."', '".date("Y-m-d H:i:s")."', 'Pending');";
-											mysqli_query($dlink, $query) or die(mysqli_error($dlink));
-
-											$query = "UPDATE products SET quantity = quantity - ".$cart[$x]['quantity']." WHERE prodid = ".$cart[$x]['prodid'].";";
-											mysqli_query($dlink, $query) or die(mysqli_error($dlink));
-
-											$cart[$x]["quantity"] = 0;
-											$cart[$x]["order"] = false; // Update quantity to 0
-										}
-										
-										$serialized_cart = serialize($cart);
-										setcookie("orders", $serialized_cart, time() + 3600);
-									}
-								}
-
-								mysqli_close($dlink);
-								?>
 
 
                             </div>

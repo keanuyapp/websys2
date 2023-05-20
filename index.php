@@ -42,9 +42,9 @@
 					<li><a href="index.php?register=true&#register">Register</a></li>');
 					}
 					else{
-            print "<li><a style='color:black' href=products.php?products=true>Products</a></li>";
-						print "<li><a style='color:black' href=cart.php?products=true#portfolio>Cart</a></li>";
-            print "<li><a style='color:black' href=myorders.php?myorders=true>My Orders</a></li>";
+                 
+						
+                 
 						print "<li><a style='color:black' href=index.php?logout=true>Logout</a></li>";
 						print "<h5 style='color:#eb5d1e'>  Welcome " . $_COOKIE['type'];
 						print "  " .$_COOKIE['email'];
@@ -153,6 +153,8 @@
             <a href="index.php?login=true&#login">Log in</a>
             <a href="index.php?register=true&#register">Register</a>
             <a href="products.php?">Products</a>
+            <a href="myorders.php?myorders=true">My Orders</a>
+            <a href="cart.php?products=true#portfolio">Cart</a>
          </div>
       </div>
       <!-- header -->

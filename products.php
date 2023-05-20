@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+	<style>
+ .popup {
+     position: fixed;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.5);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ 
+ .popup-content {
+     background-color: white;
+     padding: 20px;
+     margin-top: 20%; /* Adjust the value to set the desired padding on top */
+ }
+ 
+ .popup h2 {
+     margin-top: 0;
+ }
+ 
+ .popup button {
+     margin-top: 10px;
+ }
+
+ /* Additional Styles */
+ .popup-content {
+     max-width: 400px; /* Optional: Set a maximum width for the popup */
+     margin: auto; /* Center the popup horizontally */
+ }
+</style>
       <!-- basic -->
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,6 +76,10 @@
             <a href="index.php">Home</a>
             <a href="index.php?login=true&#login">Log in</a>
             <a href="index.php?register=true&#register">Register</a>
+            <a href="products.php?">Products</a>
+            <a href="myorders.php?myorders=true">My Orders</a>
+            <a href="cart.php?products=true#portfolio">Cart</a>
+         </div>
             
          </div>
       </div>
